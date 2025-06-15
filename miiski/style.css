@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('panner.jpg'); /* kaliya magaca, path kuma darin */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

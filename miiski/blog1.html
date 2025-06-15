@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>University Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; background-color: #fff; }
+    html { scroll-behavior: smooth; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: transparent;
+      color: inherit;
+    }
+
+    .nav-links {
+      flex: 1;
+      text-align: right;
+    }
+
+    .nav-links ul {
+      list-style: none;
+    }
+
+    .nav-links ul li {
+      display: inline-block;
+      padding: 8px 12px;
+    }
+
+    .nav-links ul li a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .nav-links ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .fa-bars, .fa-times {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .fa-bars, .fa-times {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .nav-links {
+        position: absolute;
+        background: white;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 0.5s;
+        color: black;
+      }
+
+      .nav-links ul {
+        padding: 30px;
+      }
+
+      .nav-links ul li {
+        display: block;
+        padding: 15px 10px;
+      }
+
+      .nav-links .fa-times {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+      }
+    }
+
+    .sub-header {
+      height: 50vh;
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('garden.jpg');
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .sub-header h1 {
+      font-size: 40px;
+    }
+
+    .blog-contact {
+      width: 80%;
+      margin: auto;
+      padding: 60px 0;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .blog-left {
+      flex-basis: 65%;
+    }
+
+    .blog-left img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .blog-left h1 {
+      margin: 30px 0 20px;
+    }
+
+    .blog-left p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .comment-box {
+      border: 1px solid #0fcea2;
+      margin: 50px 0;
+      padding: 20px;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border: none;
+      background: #f0f0f0;
+    }
+
+    .comment-form button {
+      background: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background: #ec1c05;
+    }
+
+    .blog-right {
+      flex-basis: 30%;
+      background: #f6e0e0;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .blog-right h3 {
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: red;
+    }
+
+    .category-list a {
+      display: block;
+      padding: 10px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+      transition: 0.3s;
+    }
+
+    .category-list a:hover {
+      background: #ec7e7e;
+      color: white;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      background: #eee;
+    }
+
+    .footer h4 {
+      margin-bottom: 20px;
+    }
+
+    .icons i {
+      color: black;
+      margin: 0 10px;
+      font-size: 20px;
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media(max-width:700px){
+      .sub-header h1 {
+
+
+      .blog-left, .blog-right {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<section class="sub-header">
+  <nav>
+    <span class="fa-solid fa-bars" onclick="showMenu()"></span>
+    <div class="nav-links" id="navLinks">
+      <span class="fa-solid fa-times" onclick="hideMenu()"></span>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+  <h1>University Programs 2025</h1>
+</section>
+
+<!-- BLOG SECTION -->
+<section class="blog-contact">
+  <div class="blog-left">
+    <img src="lady.jpg" alt="Student">
+    <h1>Discover Our Programs</h1>
+    <p>We offer a wide range of programs tailored to students who want to lead in the modern world.</p>
+    <p>Whether your passion is in science, technology, arts or public service, we have a program that suits you.</p>
+    <p>Our faculty brings world-class experience and mentorship into every classroom, both online and in-person.</p>
+    <p>You'll gain not just knowledge, but the real-world skills to thrive in your career or academic journey.</p>
+    <p>Each program includes workshops, internships, and live sessions to prepare you for global challenges.</p>
+    <p>International partnerships give our students exposure and opportunities abroad.</p>
+    <p>We believe in innovation, collaboration, and critical thinking as tools for change.</p>
+    <p>Enroll now and take the first step toward a brighter future.</p>
+    <p>Financial aid and flexible learning paths available for eligible students.</p>
+    <p>Join a vibrant community of learners committed to making an impact.</p>
+
+    <div class="comment-box">
+      <h3>Leave a comment</h3>
+      <form class="comment-form">
+        <input type="text" placeholder="Enter Name">
+        <input type="email" placeholder="Enter Email">
+        <textarea rows="5" placeholder="Your comment"></textarea>
+        <button type="submit">POST COMMENT</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="blog-right">
+    <h3>Post Categories</h3>
+    <div class="category-list">
+      <a href="#">Engineering</a>
+      <a href="#">Computer Science</a>
+      <a href="#">Health & Medicine</a>
+      <a href="#">Political Science</a>
+      <a href="#">Psychology</a>
+      <a href="#">Education</a>
+      <a href="#">Business</a>
+      <a href="#">Finance</a>
+      <a href="#">Marketing</a>
+      <a href="#">Environmental Science</a>
+      <a href="#">Law</a>
+      <a href="#">Sociology</a>
+      <a href="#">Architecture</a>
+      <a href="#">Mathematics</a>
+      <a href="#">Physics</a>
+      <a href="#">History</a>
+      <a href="#">Linguistics</a>
+      <a href="#">Art & Design</a>
+      <a href="#">Artificial Intelligence</a>
+      <a href="#">Cybersecurity</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <h4>About Us</h4>
+  <p>We are dedicated to transforming education for the future generation.</p>
+  <div class="icons">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+  </div>
+  <p>Made with ❤️ by OpenAI x Easy Tutorials</p>
+</section>
+
+<footer>
+  © 2025 University. All rights reserved.
+</footer>
+
+<script>
+  function showMenu() {
+    document.getElementById('navLinks').style.right = "0";
+  }
+  function hideMenu() {
+    document.getElementById('navLinks').style.right = "-200px";
+  }
+</script>
+
+</body>
+</html>
